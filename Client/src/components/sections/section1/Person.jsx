@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetch from "../../../JS/services/fetch";
-// import socket from "../../../JS/soket_Io_client/Socket";
 import './person.css'
 
 export default function Person(props) {
@@ -13,7 +12,7 @@ export default function Person(props) {
 
   const loggedUser_id = JSON.parse(localStorage.getItem("loggedUser_id"))
   const members = props.props.members
-  const companion_id = members.find(id => { if (id !== loggedUser_id) { return id } })
+  const companion_id = members.find(id => { if (id !== loggedUser_id) {return id}  })
   
   useEffect(() => {
     fetch.post("chat/about_companion", { companion_id, })

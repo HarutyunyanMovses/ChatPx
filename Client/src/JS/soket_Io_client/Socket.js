@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import openSocket from 'socket.io-client';
 import SECRET from "../secrets"
 
-
+let socket;
 const Socket = () => {
-  const socket = openSocket(SECRET.URL_WS_SERVER)
+   socket = openSocket(SECRET.URL_WS_SERVER)
   const dispatch = useDispatch()
   const loggedUser_id = JSON.parse(localStorage.getItem("loggedUser_id"))
 
@@ -32,4 +32,9 @@ const Socket = () => {
 
 }
 
-export default Socket
+let SOCKET = {
+  Socket,
+  socket
+}
+
+export default  SOCKET

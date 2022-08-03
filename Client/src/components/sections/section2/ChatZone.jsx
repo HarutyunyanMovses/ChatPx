@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import ThisUserMessage from "./ThisUserMessage";
 import OtherUserMessage from "./OtherUserMessage";
+import { useSelector } from "react-redux/es/exports";
 import Time from "..//Time";
 import "./section2.css";
 
@@ -8,12 +9,15 @@ const value =
   "Vax@ petq a gnanq tex, heto urish tex u tenc eli apervax@ petq a gnanq tex, heto urish tex u tenc eli apervax@ petq a gnanq tex, heto urish tex u tenc eli apervax@ petq a gnanq tex, heto urish tex u tenc eli apervax@ petq a gnanq tex, heto urish tex u tenc eli apervax@ petq a gnanq tex, heto urish tex u tenc eli apervax@ petq a gnanq tex, heto urish tex u tenc eli aper";
 
 function ChatZone() {
-  // useEffect = () => {
-    // REDAX -> const messages = redax.messages
-    // REDAX -> const sendlerId = redax.sendlerId
-    // LocalStorage -> const thisUserId = JSON.parse(localStorage.getItem("thisUserAbout")).thisUser_id
-    <></>;
-  // };
+
+  
+  
+  // // useEffect = () => {
+  //   // REDAX -> const messages = redax.messages
+  //   // REDAX -> const sendlerId = redax.sendlerId
+  //   // LocalStorage -> const thisUserId = JSON.parse(localStorage.getItem("thisUserAbout")).thisUser_id
+  //   <></>;
+  // // };
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import ChatPartnerHeader from "./ChatPartnerHeader";
 import MessageArea from "./MessageArea";

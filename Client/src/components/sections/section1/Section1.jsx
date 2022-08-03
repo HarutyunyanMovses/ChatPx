@@ -6,12 +6,9 @@ import All from "./filter/All";
 import OnlyChats from "./filter/OnlyChats";
 import CreateGroupPopUp from "./createGroupop";
 
-import fetch from "..//..//..//JS/services/fetch";
 
 function Section1() {
-  const [users, setUsers] = useState([]);
   const [error, setError] = useState(false);
-  const [sessionStorage, setSessionStorage] = useState([]);
   const [openChat, setOpenChat] = useState(false);
   const [openGroup, setOpenGroup] = useState(false);
   const [openAll, setOpenAll] = useState(true);
