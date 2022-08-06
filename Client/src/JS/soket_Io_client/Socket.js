@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import openSocket from 'socket.io-client';
 import SECRET from "../secrets"
 
-let socket;
+let socket= openSocket(SECRET.URL_WS_SERVER);
 const Socket = () => {
-   socket = openSocket(SECRET.URL_WS_SERVER)
+  //  socket = openSocket(SECRET.URL_WS_SERVER)
   const dispatch = useDispatch()
   const loggedUser_id = JSON.parse(localStorage.getItem("loggedUser_id"))
 
@@ -22,6 +22,15 @@ const Socket = () => {
       type: "ADD_ONLINE_USERS",
       payload: users
     })
+  })
+
+  socket.on("getMessage", data =>{
+    console.log(data);
+    dispatch({ type: 'SET_NEW_MESSAGE', payload: data})
+  })
+
+  socket.on("ERROR", e => {
+    console.log(e);
   })
 
   return ( 

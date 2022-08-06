@@ -18,7 +18,7 @@ class MessageControlre {
       res.status(500).json("conversation dont saveing");
     }
   }
-////  persons
+  ////  persons
   async getConvById(req, res) {
     try {
       const conversation = await ConversationSchame.find({
@@ -29,26 +29,26 @@ class MessageControlre {
       res.status(500).json("conversation not found");
     }
   }
-////// person info
+  ////// person info
   async aboutConvers(req, res) {
     try {
       const data = {};
       const userId = req.body.companion_id;
-      const coversId = req.body.coversId;
+      const conversId = req.body.conversId;
 
       const aboutUser = await User.find({ _id: userId });
 
       const lastMess = await MessageSchame.find({
-        conversationId: coversId,
-        sender: userId,
+        conversationId: conversId,
+        senderId: userId,
       });
       data._id = aboutUser[0]._id
       data.name = aboutUser[0].name;
       data.lastname = aboutUser[0].lastname;
       data.imgs = aboutUser[0].imgs;
       data.contacts = aboutUser[0].contacts
-      // data.lastMessage = lastMess[lastMess.length - 1].message;
-      // data.lastMessageDate = lastMess[lastMess.length - 1].date;
+      data.lastMessage = lastMess.length > 0 ? lastMess[lastMess.length - 1].message : null;
+      data.lastMessageDate = lastMess.length > 0 ? lastMess[lastMess.length - 1].date.minutes : null;
       res.json(data);
     } catch (e) {
       console.log(e);
@@ -62,11 +62,11 @@ class MessageControlre {
       name: req.body.name,
       members: [req.body.creator_id],
     }
-    if(req.body.img){
+    if (req.body.img) {
       groupInfo.img = req.body.img
     }
     try {
-        const newConversation = new GrupConversationsSchame(groupInfo)
+      const newConversation = new GrupConversationsSchame(groupInfo)
       const savedConv = await newConversation.save();
 
       res.json(savedConv);
@@ -74,30 +74,30 @@ class MessageControlre {
       res.status(500).json("conversation dont saveing");
     }
   }
-/// add user to group
-  async addUsersGrup(req,res){
+  /// add user to group
+  async addUsersGrup(req, res) {
     try {
       const conversation_id = req.body.conversation_id
       const members = req.body.newMembers
-      const data = await GrupConversationsSchame.findOneAndUpdate({_id:conversation_id},{members,})
-      const newData = await GrupConversationsSchame.find({_id:conversation_id})
+      const data = await GrupConversationsSchame.findOneAndUpdate({ _id: conversation_id }, { members, })
+      const newData = await GrupConversationsSchame.find({ _id: conversation_id })
       res.json(newData);
     } catch (error) {
       res.status(500).json("conversation not found");
     }
   }
-  
-//// get groups 
-async getGropuById(req, res) {
-  try {
-    const groups = await GrupConversationsSchame.find({
-      members: { $in: [req.body.loggedUser_id] },
-    });
-    res.json(groups);
-  } catch (error) {
-    res.status(500).json("conversation not found");
+
+  //// get groups 
+  async getGropuById(req, res) {
+    try {
+      const groups = await GrupConversationsSchame.find({
+        members: { $in: [req.body.loggedUser_id] },
+      });
+      res.json(groups);
+    } catch (error) {
+      res.status(500).json("conversation not found");
+    }
   }
-}
 
 
   ////////////////////////////////// Messages ////////////////////////////////////////
@@ -116,7 +116,7 @@ async getGropuById(req, res) {
   async getMess(req, res) {
     try {
       const message = await MessageSchame.find({
-        conversationId: req.body,
+        conversationId: req.params.coversId,
       });
       res.json(message);
     } catch (error) {
@@ -124,24 +124,24 @@ async getGropuById(req, res) {
     }
   }
   //////// get users for search
-  
-  async getUsersForSearch(req,res){
+
+  async getUsersForSearch(req, res) {
     try {
       const users = await User.find({})
       const arr = []
       users.map(user => {
-         arr.push({
+        arr.push({
           user_id: user._id,
-          imgs : user.imgs,
+          imgs: user.imgs,
           fullname: user.name + " " + user.lastname
-         })
+        })
       })
       res.json(arr);
     } catch (error) {
       res.status(500).json(" not internet connection ");
     }
   }
-  
+
 }
 
 

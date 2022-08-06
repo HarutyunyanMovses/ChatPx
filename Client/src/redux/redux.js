@@ -12,6 +12,8 @@ import changeSection3Reducer from "./reducers/changeSection3Reducer"
 import createGroupReducer from "./reducers/createGroupReducer"
 import groupsReducer from "./reducers/groupsReducer"
 import socketReducer from "./reducers/socketRedducer"
+import sendMessReducer from "./reducers/sendMessReducer"
+import messagesForSection2 from "./reducers/messagesForSection2"
 
 const rootReducer = combineReducers({
     setSearchUsers: usersReducer,
@@ -23,10 +25,15 @@ const rootReducer = combineReducers({
     setChangeSection2: changeSection2Reducer,
     setChangeSection3: changeSection3Reducer,
     setCreateGroup: createGroupReducer,
+    setAllMessages:messagesForSection2,
+    setSendData: sendMessReducer,
     setSocket:socketReducer
 })
 
-const store = configureStore({ reducer: rootReducer }, composeWithDevTools)
+const store = configureStore({ reducer: rootReducer }, {middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    immutableCheck: false,
+    serializableCheck: false,
+})})
 
 
 export default store

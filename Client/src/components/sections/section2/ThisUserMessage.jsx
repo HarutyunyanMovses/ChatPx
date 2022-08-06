@@ -3,11 +3,9 @@ import { useSelector } from "react-redux";
 
 export default function ThisUserMessage(props) {
   const data = useSelector(state => state.setLoggedUser.thisUser);
-  console.log(data);
-
   return (
     <>
-      <div className="leftMessage">
+      <div className="leftMessage" >
         <p className="messageContent">{props.value}</p>
       </div>
 
@@ -17,4 +15,4 @@ export default function ThisUserMessage(props) {
       />
     </>
   );
-}
+  }

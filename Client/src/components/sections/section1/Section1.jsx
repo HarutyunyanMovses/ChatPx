@@ -4,7 +4,7 @@ import Search from "./Search";
 import OnlyGroups from "./filter/OnlyGroups";
 import All from "./filter/All";
 import OnlyChats from "./filter/OnlyChats";
-import CreateGroupPopUp from "./createGroupop";
+import CreateGroupPopUp from "./CreateGroupop";
 
 
 function Section1() {

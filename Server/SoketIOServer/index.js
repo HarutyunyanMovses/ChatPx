@@ -1,8 +1,9 @@
 // libs
 const FormData = require('form-data');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const axios = require("axios")
 //secrets
-const { Origin_URL1, PORT, Origin_URL2} = require("./secrets_io/config")
+const { Origin_URL1, PORT, Origin_URL2 , URL_LOCAL_SERVER} = require("./secrets_io/config")
 /// servis
 const Fetch = require("./FetchServis/fetch")
 
@@ -47,11 +48,12 @@ io.on("connection", (socket) => {
   });
 
   //send and get message
-  socket.on("sendMessage", async ({ senderId, message, companionId ,conversationId}) => {
+  socket.on("sendMessage", async (data) => {
     const messageForMongo = {
-      conversationId,
-      senderId,
-      message: message,
+      conversationId: data.conversationId,
+      senderId: data.senderId,
+      message: data.message,
+      type: data.type,
       date: {
         hours: new Date().getHours() + "",
         minutes: new Date().getMinutes() + "",
@@ -62,16 +64,21 @@ io.on("connection", (socket) => {
         year: (new Date().getYear() - 100) + "",
       }
     }
-    Fetch.post("chat/sendmessage", messageForMongo)
-      .then(data => {
-        const companion = getUser(companionId);
-        io.to(companion.socketId).emit("getMessage", data)
-        const sender = getuser(senderId)
-        io.to(sender.socketId).emit("getMessage", data)
-      })
+    axios.post(`${URL_LOCAL_SERVER}/chat/sendmessage`, messageForMongo,{
+      Headers:{
+        "Content-Type" : "aplication/json"
+      }
+    })
+      .then(response => {
+       const message = response.data
+        const companion = getUser(data.companionId);
+       companion?io.to(companion.socketId).emit("getMessage", message):null
+        const sender = getUser(data.senderId)
+        io.to(sender.socketId).emit("getMessage", message)
+      }) 
       .catch(e => {
-        const sender = getUser(senderId);
-        io.to(sender.socketId).emit("getMessage", e)
+        const sender = getUser(data.senderId);
+        io.to(sender.socketId).emit("ERROR", e)
       })
   });
 

@@ -1,23 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useSelector } from 'react-redux'
 import './section1.css'
 
-class Search extends React.PureComponent{
-    constructor(props){
-        super();
-        this.state = {
+const Search = () => {
 
-        }
-    }
+    const users = useSelector(state => state.setSearchUsers.searchUsers)
+    const [search,setSearch] = useState("")
 
-    render(){
+
+
         return(
             <div className='search'>
                 <p>Conversation</p>
-                <input className='searchInput' placeholder='⌕ Search'/>
+                <input
+                 className='searchInput'
+                  placeholder='⌕ Search'
+                  onChange={(e)=>{
+                    setSearch(e.target.value)
+                  }}
+                  value={search}
+                  />
             </div>
         )
     }
 
-}
 
 export default Search;

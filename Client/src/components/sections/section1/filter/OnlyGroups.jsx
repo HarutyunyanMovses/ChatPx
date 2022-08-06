@@ -1,7 +1,7 @@
 import React from "react";
 import Group from "..//Group";
 import "..//section1.css";
-import CreatGroup from "../createGroup";
+import CreatGroup from "../CreateGroup";
 
 function OnlyGroups() {
   return (

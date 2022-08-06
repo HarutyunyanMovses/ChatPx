@@ -26,7 +26,7 @@ router.post("/group_by_user_id", MessengerControler.getGropuById)
 // add Mess
 router.post("/sendmessage", MessengerControler.addMess);
 // get mess
-router.get("/mess:coversId", authMiddleware, MessengerControler.getConvById);
+router.get("/mess:coversId", authMiddleware, MessengerControler.getMess);
 // get registred users for search
 router.get("/all_registered_users", authMiddleware, MessengerControler.getUsersForSearch)
 module.exports = router;
