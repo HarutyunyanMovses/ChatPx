@@ -30,10 +30,7 @@ const rootReducer = combineReducers({
     setSocket:socketReducer
 })
 
-const store = configureStore({ reducer: rootReducer }, {middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    immutableCheck: false,
-    serializableCheck: false,
-})})
+const store = configureStore({ reducer: rootReducer }, composeWithDevTools)
 
 
 export default store

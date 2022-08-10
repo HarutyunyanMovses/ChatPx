@@ -194,6 +194,7 @@ p {
 .messageContent {
     margin: 10px;
     color: white;
+    user-select: text;
 }
 
 .thisUserPic {
@@ -239,4 +240,48 @@ p {
     color: red;
     font-size: 0; 
     cursor: pointer;
+}
+
+.update{
+    font-size: 38px;
+    cursor: pointer;
+}
+
+.updateButtons{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    padding: 2px;
+}
+
+.updateButtons>span{
+    /* border:1px solid red ; */
+    padding: 1px;
+    margin-bottom:2px ;
+    background-color: #111520;
+    cursor: pointer;
+}
+.closIsUpdate{
+    display: flex;
+    justify-content: flex-end;
+    color: red;
+    padding: 1px;
+  cursor: pointer;
+}
+
+.messUpdateInp{
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.thisFile {
+    width: 11vh;
+    height: 11vh;
+}
+
+.thisFileVideo{
+    width: 26vh;
+    height: 16vh;
 }

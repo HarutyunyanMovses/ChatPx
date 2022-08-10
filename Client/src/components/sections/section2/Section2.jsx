@@ -8,7 +8,6 @@ import "./section2.css";
 
 export default function Section2() {
   const data = useSelector(state => state.setChangeSection2.isOpen);
-
   return (
     <div className="section2">
       {data ? (

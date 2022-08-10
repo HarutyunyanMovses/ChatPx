@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetch from "../../../JS/services/fetch";
 import './person.css'
@@ -15,12 +16,10 @@ export default function Person(props) {
   const members = props.props.members
   const companion_id = members.find(id => id !== loggedUser_id )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch.post("chat/about_companion", { companion_id,conversId:props.props._id })
       .then(data => {
         setData(data);
-        dispatch({ type: "SEND_MESSAGE_DATA", payload: props.props._id, key: "conversationId" })
-        dispatch({ type: "SEND_MESSAGE_DATA", payload: companion_id, key: "companionId" })
       })
       .catch(e => {
         dispatch({ type: "ADD_ERROR", payload: true })
@@ -42,6 +41,8 @@ export default function Person(props) {
     fetch.get(`chat/mess${props.props._id}`)
     .then(data=>{
       dispatch({ type: 'SET_MESSAGES', payload: data })
+      dispatch({ type: "SEND_MESSAGE_DATA", payload: props.props._id, key: "conversationId" })
+      dispatch({ type: "SEND_MESSAGE_DATA", payload: companion_id, key: "companionId" })
     })
     .then(ok => {
       dispatch({ type: 'IS_OPEN', payload: true })

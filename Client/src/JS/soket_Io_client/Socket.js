@@ -25,8 +25,15 @@ const Socket = () => {
   })
 
   socket.on("getMessage", data =>{
-    console.log(data);
     dispatch({ type: 'SET_NEW_MESSAGE', payload: data})
+  })
+
+  socket.on("getUpdate", data =>{
+    dispatch({ type: 'SET_MESSAGES', payload: data})
+  })
+
+  socket.on("newCompanion",(data)=>{
+    dispatch({ type: 'ADD_NEW_CONVERSATIONS', payload: data})
   })
 
   socket.on("ERROR", e => {

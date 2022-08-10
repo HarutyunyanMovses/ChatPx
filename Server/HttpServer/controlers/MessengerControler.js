@@ -8,8 +8,9 @@ class MessageControlre {
   //////////////////////////////////// Conversation /////////////////////////////////
 
   async newConversation(req, res) {
+    console.log(req.params);
     const newConversation = new ConversationSchame({
-      members: [req.body.senderId, req.body.receiverId],
+      members: [req.params.user1, req.params.user2],
     });
     try {
       const savedConv = await newConversation.save();
@@ -123,6 +124,32 @@ class MessageControlre {
       res.status(500).json("Message note found");
     }
   }
+
+    /// delete message
+async deleteMess(req,res){
+  const _id = req.params.mess_id
+  const conversationId = req.params.conversId
+   MessageSchame.deleteOne({_id,})
+  .then(d => {
+     MessageSchame.find({conversationId,})
+     .then(data=>{
+       res.json(data)
+     })
+  })
+}
+//// update
+async updateMess(req,res){
+const _id = req.params.mess_id
+const conversationId = req.params.conversId
+const message = req.params.message
+MessageSchame.updateOne({_id,},{message,}) 
+.then(d => {
+   MessageSchame.find({conversationId,})
+   .then(data=>{
+     res.json(data)
+   })
+})
+}
   //////// get users for search
 
   async getUsersForSearch(req, res) {

@@ -26,7 +26,7 @@ function ChatZone() {
             <Fragment key={item._id + "1"}>
               <Time />
               <div className="thisUserMessage" key={item._id}>
-                <ThisUserMessage value={item.message} id = {item._id}/>
+                <ThisUserMessage value={item.message} id = {item._id} conversId = {item.conversationId} type={item.type}/>
               </div>
             </Fragment>)
           } else {
