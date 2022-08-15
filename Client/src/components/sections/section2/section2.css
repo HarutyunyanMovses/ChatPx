@@ -285,3 +285,11 @@ p {
     width: 26vh;
     height: 16vh;
 }
+
+.messageFile{
+    background-color: #1d2437;
+}
+
+.thisFileAudio{
+    outline: none;
+}

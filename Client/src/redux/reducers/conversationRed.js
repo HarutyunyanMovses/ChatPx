@@ -11,7 +11,6 @@ export default function conversationReducer(state = initialState, action) {
             }
             case "ADD_NEW_CONVERSATIONS":
                 return {
-                    ...state,
                     conversations: [...state.conversations, action.payload]
                 }
             default:

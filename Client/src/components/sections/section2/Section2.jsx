@@ -17,7 +17,7 @@ export default function Section2() {
           <MessageArea />
         </>
       ) : (
-        <img className="bigLogo" src={logo} />
+        <img className="bigLogo" src={logo} alt={""}/>
       )}
     </div>
   );

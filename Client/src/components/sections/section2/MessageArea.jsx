@@ -20,7 +20,7 @@ export default function MessageArea() {
 
   useEffect(() => {
     dispatch({ type: "SEND_MESSAGE_DATA", payload: message, key: "message" })
-  }, [message])
+  }, [message,dispatch])
 
 
   const upload = () => {

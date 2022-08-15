@@ -127,11 +127,13 @@ io.on("connection", (socket) => {
   })
 
   socket.on("callUser", (data) => {
-    io.to(data.userToCall).emit("callUser", { signal: data.signalData, from: data.from, name: data.name })
+    const user = getUser(data.userToCall)
+    user?io.to(user.socketId).emit("callUser", { signal: data.signalData, from: data.from, name: data.name }):null
   })
 
   socket.on("answerCall", (data) => {
-    io.to(data.to).emit("callAccepted", data.signal)
+    const user = getUser(data.to)
+    user?io.to(user.socketId).emit("callAccepted", data.signal):null
   })
 
   //when disconnect
