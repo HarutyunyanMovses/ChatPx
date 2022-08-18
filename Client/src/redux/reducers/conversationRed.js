@@ -5,6 +5,7 @@ const initialState = {
 export default function conversationReducer(state = initialState, action) {
     switch (action.type) {
         case "ADD_CONVERSATIONS":
+            console.log(action.payload);
             return {
                 ...state,
                 conversations: action.payload

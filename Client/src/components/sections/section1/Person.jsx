@@ -37,6 +37,8 @@ export default function Person(props) {
     }
   }, [onlineUsers, data])
 
+  useEffect(()=>{dispatch({type: "IS_ONLINE",payload:isOnline})},[isOnline])
+
   function handlerOpenSection2() {
     fetch.get(`chat/mess${props.props._id}`)
       .then(data => {
@@ -47,6 +49,8 @@ export default function Person(props) {
       .then(ok => {
         dispatch({ type: 'IS_OPEN', payload: true })
         dispatch({ type: 'CHANGE-SECTION2', payload: data })
+        dispatch({type: "SET_CALL" ,payload: false })
+        dispatch({type: "IS_ONLINE",payload:isOnline})
       })
   }
 

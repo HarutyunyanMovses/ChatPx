@@ -20,7 +20,7 @@ export default function MessageArea() {
 
   useEffect(() => {
     dispatch({ type: "SEND_MESSAGE_DATA", payload: message, key: "message" })
-  }, [message,dispatch])
+  }, [message])
 
 
   const upload = () => {
@@ -75,6 +75,7 @@ export default function MessageArea() {
         onClick={() => {
           if (message.length !== 0 && !isFile) {
             SOCKET.socket.emit("sendMessage", data)
+            console.log(12);
             setMessage('')
           } else if (file) {
             upload()
