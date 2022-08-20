@@ -1,35 +1,37 @@
 //  lib
 const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require('multer')
 const path = require('path')
 const fs = require("fs")
+const http = require("http").createServer(app)
+module.exports = http
 // routers
 const routerClient = require("./routers/authRouter");
 const routerAdmin = require("./routers/adminRouter");
 const routerMessages = require("./routers/messengerRouter");
 // secret
 const SECRET = require("./secrets/config");
+const startingSocket = require("./socket")
 //db
 const GridFile = require("./models/filesSchame");
-const Users = require("./models/user")
-const message = require("./models/MessageSchame");
 const { send } = require("process");
 ////middleWare
 const upload = multer({ dest: path.join(__dirname, '.') })
 
+
 const PORT = SECRET.PORT || "3033";
-const app = express();
+
 app.use(cors({
-  origin: ["http://localhost:3000","http://localhost:3001"],
+  origin: ["http://localhost:3000"],
   maxHttpBufferSize: 1e8
 }));
 app.use(express.json({limit: "30mb",extended:true}));
 app.use("/auth", routerClient);
 app.use("/admin", routerAdmin);
 app.use("/chat", routerMessages);
-
 app.post('/chatpx/filefromclient', upload.any(), async (req, res, nxt) => {
   try {
     console.log(req.files);
@@ -75,14 +77,11 @@ app.get('/chatpx/files/:id/:name', async (req, res, nxt) => {
   }
 })
 
-// app.get('/delete',(req,res)=>{
-//   message.find({}).then(data => {
-//     data.forEach(item => {
-//       message.deleteOne({_id:item._id}).then(data => console.log(data))
-//     })
-//   })
-//   res.send("ok")
-// })
+app.get("/", (req,res)=>{
+  res.send(
+  "<h1> hello</h1>"
+  )
+})
 
 async function startAPP() {
   try {
@@ -94,7 +93,7 @@ async function startAPP() {
       .then(() => console.log("DB is conected... "))
       .catch(() => console.log("DB is not conected see your Node"));
 
-    app.listen(PORT, () => {
+    http.listen(PORT, () => {
       console.log(`HttpServer is started... `);
     });
   } catch (e) {
@@ -102,4 +101,6 @@ async function startAPP() {
   }
 }
 
+
 startAPP();
+startingSocket();

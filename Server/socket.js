@@ -1,17 +1,16 @@
 // libs
-const FormData = require('form-data');
 const axios = require("axios")
+const http = require("./index")
 //secrets
-const { Origin_URL1, PORT, Origin_URL2, URL_LOCAL_SERVER } = require("./secrets_io/config")
+const { URL_LOCAL_SERVER , Origin_URL1 } = require("./secrets_io/config")
 
-const io = require("socket.io")({
+const io = require("socket.io")(http , {
   cors: {
-    origin: [Origin_URL1, Origin_URL2]
+    origin: [Origin_URL1]
   },
-  maxHttpBufferSize: 1e8 // 100 MB
-});
-const starting = () => {
-  io.listen(PORT)
+})
+
+module.exports = function starting () {
   console.log("Soket.IO server is started...");
 }
 
@@ -185,9 +184,4 @@ io.on("connection", (socket) => {
 });
 
 
-try {
-  starting();
-} catch (e) {
-  console.log(e);
-}
 
