@@ -41,10 +41,9 @@ const ChatHeader = () => {
         <i className="material-icons">
           &#xe7f7;<div className="newMess"></div>
         </i>
-        <img
+        <div
           className="thisImg"
-          src={loggedUser?loggedUser.imgs[0]:"" }
-          alt="img"
+          style={{backgroundImage : `url(${loggedUser?loggedUser.imgs[0]:""})`}}
         />
         <p className="thisFullName">{loggedUser?loggedUser.fullName:""}</p>
         <p onClick={showDropDown} className="dropSleck">

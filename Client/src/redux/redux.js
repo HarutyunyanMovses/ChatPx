@@ -11,11 +11,11 @@ import changeSection2Reducer from "./reducers/changeSection2Reducer"
 import changeSection3Reducer from "./reducers/changeSection3Reducer"
 import createGroupReducer from "./reducers/createGroupReducer"
 import groupsReducer from "./reducers/groupsReducer"
-import socketReducer from "./reducers/socketRedducer"
 import sendMessReducer from "./reducers/sendMessReducer"
 import messagesForSection2 from "./reducers/messagesForSection2"
 import videoCallReducer from "./reducers/videoCallReducer"
 import headerConfigReducer from "./reducers/headerReducer"
+
 
 const rootReducer = combineReducers({
     setSearchUsers: usersReducer,
@@ -29,12 +29,11 @@ const rootReducer = combineReducers({
     setCreateGroup: createGroupReducer,
     setAllMessages:messagesForSection2,
     setSendData: sendMessReducer,
-    setSocket:socketReducer,
     setHeaderConfig : headerConfigReducer,
     setCall: videoCallReducer
 })
 
-const store = configureStore({ reducer: rootReducer }, composeWithDevTools)
+const store = configureStore({ reducer: rootReducer }, )
 
 
 export default store

@@ -19,7 +19,7 @@ export default function MessageArea() {
 
 
   useEffect(() => {
-    dispatch({ type: "SEND_MESSAGE_DATA", payload: message, key: "message" })
+    dispatch({ type: "SET_MESSAGE", payload: message,  })
   }, [message])
 
 
@@ -42,7 +42,7 @@ export default function MessageArea() {
     <div className="messagePlace">
       <p onClick={() => {
         setIsFile(true)
-        dispatch({ type: "SEND_MESSAGE_DATA", payload: "file", key: "type" })
+        dispatch({ type: "SET_TYPE", payload: "file",  })
       }}>+</p>
       {!isFile ? (
         <>
@@ -81,6 +81,7 @@ export default function MessageArea() {
             upload()
             setFile("")
             setIsFile(false)
+            dispatch({ type: "SET_TYPE", payload: "message",})
           }
         }}
       />

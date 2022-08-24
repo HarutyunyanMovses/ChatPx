@@ -9,7 +9,8 @@ import { useRef } from "react";
 
 
 function ChatZone() {
-  const allMessages = useSelector(state => state.setAllMessages.allMessages)
+  const conversationId = useSelector(state => state.setSendData.conversationId )
+  const allMessages = useSelector(state => state.setAllMessages[conversationId])
   const bottomRef = useRef(null)
   const loggedUser_id = JSON.parse(localStorage.getItem("loggedUser_id"))
 
@@ -33,8 +34,8 @@ function ChatZone() {
             return (
             <Fragment key={item._id + "1"}>
               <Time />
-              <div className="otherUserMessage" key={item._id} id = {item._id}>
-                <OtherUserMessage value={item.message} />
+              <div className="otherUserMessage" key={item._id} id = {item._id}  >
+                <OtherUserMessage value={item.message} type={item.type}  id = {item._id} />
               </div>
             </Fragment>)
           }

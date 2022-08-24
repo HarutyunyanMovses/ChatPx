@@ -1,5 +1,5 @@
 const initialState = {
-    aboutAs : true
+    aboutAs : false
 }
 
 

@@ -4,15 +4,14 @@ import "./aboutAs.css"
 
 export default function AboutAs() {
     const CV_MOVSES = "https://serverchatpx.herokuapp.com/chatpx/files/630015dbb60cd6485896a720/Movses_Harutyunyan_CV.pdf"
-    const MovsesImg = "https://serverchatpx.herokuapp.com/chatpx/files/62cf6774f8ecd9a1acf55d7a/noImgMen.PNG"
     const certificate_Movses = "https://serverchatpx.herokuapp.com/chatpx/files/63001e404002a43b5f90613d/Certificate_Movses.png"
-    const certificate_Yrvand = "https://serverchatpx.herokuapp.com/chatpx/files/63001e404002a43b5f90613d/Certificate_Movses.png"
+    const certificate_Yrvand = "https://serverchatpx.herokuapp.com/chatpx/files/630164668d0b1762fdf13dc9/Yervand_markosyan.png"
     const CV_YERVAND = "https://serverchatpx.herokuapp.com/chatpx/files/63001622b60cd6485896a723/CV-js.pdf"
 
     return (
         <div className="aboutAs">
             <div className="Movses twoDiv">
-                <img src={MovsesImg} alt="img" className="dev_avatar" />
+                <div  className="dev_avatar_Movses" />
                 <h1>Movses Harutyunyan</h1>
                 <div className="about_files">
                     <a href={certificate_Movses} download className="a_aboutAs">
@@ -38,7 +37,7 @@ export default function AboutAs() {
                 </div>
             </div>
             <div className="Yervand twoDiv">
-                <img src={MovsesImg} alt="img" className="dev_avatar" />
+                <div className="dev_avatar_Yervand" />
                 <h1>Yervand Markosyan</h1>
                 <div className="about_files">
                    <p> <a href={certificate_Yrvand} download className="a_aboutAs">
@@ -54,12 +53,12 @@ export default function AboutAs() {
                 <div className="contacts">
                     <h3>contacts</h3>
                     <lu>
-                        <li>email.../ </li>
+                        <li>email.../ yer.markosyan@gmail.com</li>
                         <li>github.../ &ensp;
                             <a href="https://github.com/Yervand-Markosyan" className="a_aboutAs" target="_blank" >
                                 https://github.com/Yervand-Markosyan
                             </a></li>
-                        <li>phone.../ </li>
+                        <li>phone.../ +374(98)83-82-11</li>
                     </lu>
                 </div>
             </div>

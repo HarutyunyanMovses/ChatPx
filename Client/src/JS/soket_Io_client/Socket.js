@@ -18,12 +18,8 @@ const Socket = () => {
     console.log(conversations);
     const a = callerId ? conversations.map(item => {
       if (item.members.includes(callerId)) {
-        fetch.get(`chat/mess${item._id}`)
-          .then(messages => {
-            dispatch({ type: 'SET_MESSAGES', payload: messages })
-            dispatch({ type: "SEND_MESSAGE_DATA", payload: item.id, key: "conversationId" })
-            dispatch({ type: "SEND_MESSAGE_DATA", payload: callerId, key: "companionId" })
-          })
+            dispatch({ type: "SET_CONVERSATION_ID", payload: item._id})
+            dispatch({ type: "SET_COMPANION", payload: callerId })
       }
     }) : null
   }, [conversations, callerId])
@@ -48,7 +44,8 @@ const Socket = () => {
     })
 
     socket.on("getMessage", data => {
-      dispatch({ type: 'SET_NEW_MESSAGE', payload: data })
+      dispatch({ type: 'SET_NEW_MESSAGE', payload: data , key: data.conversationId})
+
     })
 
     socket.on("getUpdate", data => {
@@ -70,7 +67,6 @@ const Socket = () => {
     })
 
     socket.on("callEnded", (data) => {
-      dispatch({ type: 'IS_OPEN', payload: true })
       dispatch({ type: "SET_CALL", payload: false })
       dispatch({ type: "SET_START_CALL", payload: false })
       dispatch({ type: "SET_CALL_ACCEPTED", payload: false })
@@ -80,10 +76,11 @@ const Socket = () => {
       dispatch({ type: "SET_CALLER", payload: '' })
       dispatch({ type: "SET_CALLER_NAME", payload: '' })
       dispatch({ type: "SET_CALLER_SIGNAL", payload: '' })
+      dispatch({ type: 'IS_OPEN', payload: true })
     })
 
     socket.on("about_caller", (socketData) => {
-      setCallerId(socketData.data._id)
+setCallerId(socketData.data._id)
       dispatch({ type: 'CHANGE-SECTION2', payload: socketData.data })
     })
 

@@ -20,9 +20,22 @@
     padding: 1vh;
 }
 
-.dev_avatar{
+.dev_avatar_Yervand{
+background-image: url("https://serverchatpx.herokuapp.com/chatpx/files/630160b78d0b1762fdf13d8c/yer.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+width: 35vh;
+height: 35vh;
     border-radius: 50%;
 }
+.dev_avatar_Movses{
+    background-image: url("https://serverchatpx.herokuapp.com/chatpx/files/6302af3a6e8ea5c91985108c/Movses.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 35vh;
+    height: 35vh;
+        border-radius: 50%;
+    }
 .about_files{
     display: flex;
 }

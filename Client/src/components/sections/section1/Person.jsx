@@ -27,6 +27,10 @@ export default function Person(props) {
           // window.location.pathname = "/"
         }, 2000);
       })
+      fetch.get(`chat/mess${props.props._id}`)
+      .then(data => {
+        dispatch({ type: 'SET_MESSAGES', payload: data , key : props.props._id })
+      })
   }, [companion_id, loggedUser_id, dispatch, props.props._id])
 
   useEffect(() => {
@@ -40,19 +44,14 @@ export default function Person(props) {
   useEffect(()=>{dispatch({type: "IS_ONLINE",payload:isOnline})},[isOnline])
 
   function handlerOpenSection2() {
-    fetch.get(`chat/mess${props.props._id}`)
-      .then(data => {
-        dispatch({ type: 'SET_MESSAGES', payload: data })
-        dispatch({ type: "SEND_MESSAGE_DATA", payload: props.props._id, key: "conversationId" })
-        dispatch({ type: "SEND_MESSAGE_DATA", payload: companion_id, key: "companionId" })
-      })
-      .then(ok => {
+        dispatch({ type: "SET_CONVERSATION_ID", payload: props.props._id})
+        dispatch({ type: "SET_COMPANION", payload: companion_id })
         dispatch({ type: 'IS_OPEN', payload: true })
         dispatch({ type: 'CHANGE-SECTION2', payload: data })
         dispatch({type: "SET_CALL" ,payload: false })
         dispatch({type: "IS_ONLINE",payload:isOnline})
-      })
-  }
+      }
+
 
   return (
 
