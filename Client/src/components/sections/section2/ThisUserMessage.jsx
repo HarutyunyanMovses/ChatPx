@@ -19,7 +19,7 @@ export default function ThisUserMessage(props) {
     console.log(1);
     Fetch.delete(`chat/delete_message/${props.id}/${props.conversId}`)
     .then(data => {
-      dispatch({ type: 'SET_MESSAGES', payload: data })
+      dispatch({ type: 'SET_MESSAGES', payload: data , key : data[0].conversationId })
       SOCKET.socket.emit("update",{data,companionId:companion._id})
     })
   }
@@ -29,7 +29,7 @@ export default function ThisUserMessage(props) {
     .then(data => {
       setInput(false)
       setUpdate(false)
-      dispatch({ type: 'SET_MESSAGES', payload: data })
+      dispatch({ type: 'SET_MESSAGES', payload: data ,  key : data[0].conversationId  })
       SOCKET.socket.emit("update",{data,companionId:companion._id})
     })
   }

@@ -191,6 +191,8 @@ hr{
     border-radius: 50%;
     display: flex;
     justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
 }
 
 .searchedFullName{

@@ -9,7 +9,7 @@ const initialState = {
     answerCall: false,
     video: false,
     audio: false,
-    leaveCall: ""
+    leaveCall: {}
 
 }
 

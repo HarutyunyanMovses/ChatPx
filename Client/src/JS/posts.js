@@ -24,7 +24,7 @@ const Posts = () => {
   useEffect(() => {
     refreshToken()
     /// dispatch loged id
-    dispatch({type:"SEND_MESSAGE_DATA", payload:loggedUser_id , key:"senderId"}, )
+    dispatch({type:"SET_SENDER_ID", payload:loggedUser_id}, )
     //  logged user about
     fetch.post('auth/userbyid', { loggedUser_id, })
       .then(data => {
