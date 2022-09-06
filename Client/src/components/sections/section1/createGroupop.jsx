@@ -28,15 +28,15 @@ export default function CreateGroupPopUp() {
                 }
             ).then((res) => {
                 Fetch.post("chat/new_group", { name: grupName, creator_id, img: res.data })
-                    .then(data => {
-                        dispatch({ type: "ADD_CREATED_GROUP", payload: data })
-                        setName('')
-                        setImage('')
-                        dispatch({ type: "IS_OPEN_POP", payload: false })
-                    })
+                .then(data => {
+                    dispatch({ type: "ADD_CREATED_GROUP", payload: [data] })
+                    setName('')
+                    setImage('')
+                })
             }).catch((error) => {
-                    console.error('Error:', error);
-                });
+                console.error('Error:', error);
+            });
+            dispatch({ type: "IS_OPEN_POP", payload: false })
         } else if (grupName) {
             Fetch.post("chat/new_group", { name: grupName, creator_id, })
             .then(data => {

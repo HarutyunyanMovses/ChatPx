@@ -1,12 +1,14 @@
 import React from "react";
 import "./chatHeader.css";
 import logo from "..//..//..//icons/big-logo.png";
+import newPng from "..//section3/icons/new.png";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 const ChatHeader = () => {
 
-  const [dropDown, setDropDown] = useState(false)
+  const dropDown = useSelector(state=> state.setEditPersonalInfo.isOpenEditPeronalInfo)
+  const [collorDrop,setCollorDrop] = useState('')
   const loggedUser = useSelector(state => state.setLoggedUser.thisUser)
   const aboutAs = useSelector(state => state.setHeaderConfig.aboutAs)
   const dispatch = useDispatch()
@@ -15,9 +17,11 @@ const ChatHeader = () => {
   const showDropDown = () => {
 
     if (dropDown) {
-      setDropDown(false);
+      setCollorDrop("")
+      dispatch({type:"IS_OPEN_EDIT_PERSONAL_INFO", payload:false})
     } else {
-      setDropDown(true);
+      dispatch({type:"IS_OPEN_EDIT_PERSONAL_INFO", payload:true})
+      setCollorDrop("red")
     }
   };
 
@@ -46,9 +50,10 @@ const ChatHeader = () => {
           style={{backgroundImage : `url(${loggedUser?loggedUser.imgs[0]:""})`}}
         />
         <p className="thisFullName">{loggedUser?loggedUser.fullName:""}</p>
-        <p onClick={showDropDown} className="dropSleck">
+        <p onClick={showDropDown} className="dropSleck" style={{color: collorDrop}}>
           {dropDown ? up : down}
         </p>
+        <img onClick={showDropDown} src={newPng} alt="/" style={{width: "5vh",cursor:"pointer"}} />
       </div>
     </div>
   );

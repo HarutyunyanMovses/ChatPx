@@ -16,7 +16,7 @@ const ValidationFiles = ({ props }) => {
         return (
             <div className="messageFile">
                 <a href={props} download="true">
-                    <img src={zip} className="thisFile" alt="img" />
+                    <img src={zip} className="thisFile" alt="file" />
                 </a>
             </div>
         )
@@ -24,7 +24,7 @@ const ValidationFiles = ({ props }) => {
         return (
             <div className="messageFile">
                 <a href={props} download="true">
-                    <img src={zip} alt="img"/>
+                    <img src={zip} alt="file"/>
                 </a>
             </div>
         )
@@ -32,7 +32,7 @@ const ValidationFiles = ({ props }) => {
         return (
             <div className="messageFile">
                 <a href={props} download="true">
-                    <img src={doc} className="thisFile" alt="img" />
+                    <img src={doc} className="thisFile" alt="file" />
                 </a>
             </div>
         )
@@ -40,7 +40,7 @@ const ValidationFiles = ({ props }) => {
         return (
             <div className="messageFile" >
                 <a href={props} download="true">
-                    <img src={pdf} className="thisFile" alt="img" />
+                    <img src={pdf} className="thisFile" alt="file" />
                 </a>
             </div>
         )
@@ -48,7 +48,7 @@ const ValidationFiles = ({ props }) => {
         return(
         <div className="messageFile" >
             <a href={props} download="true">
-                <img src={html}  className="thisFile" alt="img"/>
+                <img src={html}  className="thisFile" alt="file"/>
             </a>
         </div>
         )
@@ -56,7 +56,7 @@ const ValidationFiles = ({ props }) => {
         return(
         <div className="messageFile" >
             <a href={props} download="true">
-                <img src={css}  className="thisFile" alt="img"/>
+                <img src={css}  className="thisFile" alt="file"/>
             </a>
         </div>
         )
@@ -64,7 +64,7 @@ const ValidationFiles = ({ props }) => {
         return(
         <div className="messageFile" >
             <a href={props} download="true">
-                <img src={js}  className="thisFile" alt="img"/>
+                <img src={js}  className="thisFile" alt="file"/>
             </a>
         </div>
         )
@@ -84,15 +84,10 @@ const ValidationFiles = ({ props }) => {
     }else{
         return (
             <div className="messageFile">
-                {/* <a href={props} download="true"> */}
-                    <img src={props} className="thisFile" alt="img" controls onClick={(e)=>{
-                        e.target.fullScreen = true 
-                    }} />
-                {/* </a> */}
+                    <img src={props} className="thisFile" alt="img"/>
             </div>
         )
     }
-        console.log(type);
 }
 
 export default ValidationFiles

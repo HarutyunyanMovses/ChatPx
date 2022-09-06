@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import ValidationFiles from "../section2/ValidationFiles";
 
 function Pictures(props) {
-  const messages = useSelector(state => state.setAllMessages.allMessages)
+  const conversationId = useSelector(state => state.setSendData.conversationId )
+  const messages = useSelector(state => state.setAllMessages[conversationId])
 
 
   return (

@@ -4,6 +4,7 @@ import ChatPartnerHeader from "./ChatPartnerHeader";
 import MessageArea from "./MessageArea";
 import ChatZone from "./ChatZone";
 import AboutAs from "../header/AboutAs";
+import EditPersoanlInfo from "../header/EdtPersonalInfo";
 import logo from "..//..//..//icons/big-logo.png";
 import "./section2.css";
 import CallZona from "./CallZona";
@@ -13,7 +14,16 @@ export default function Section2() {
   const call = useSelector(state => state.setCall.call)
   const startCall = useSelector(state => state.setCall.startCall)
   const aboutAs = useSelector(state => state.setHeaderConfig.aboutAs)
+  const isOpenEditPeronalInfo = useSelector(state => state.setEditPersonalInfo.isOpenEditPeronalInfo)
 
+
+  if (isOpenEditPeronalInfo) {
+    return(
+      <div className="section2">
+          <EditPersoanlInfo/>
+      </div>
+    )
+  }
 
   if (aboutAs) {
     return (

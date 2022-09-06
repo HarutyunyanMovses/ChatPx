@@ -6,14 +6,14 @@ const { validationResult } = require("express-validator");
 const User = require("../models/user");
 const Role = require("../models/role");
 //secret
-const Secret = require("../secrets/config");
+const SECRET = require("..//config");
 
 const generateAccesToken = (email, roles) => {
   const payload = {
     email,
     roles,
   };
-  return jwt.sign(payload, Secret.secret, { expiresIn: "240s" });
+  return jwt.sign(payload, SECRET.SECRET.secret, { expiresIn: "240s" });
 };
 
 class authControler {
@@ -74,7 +74,7 @@ class authControler {
   async getToken(req, res) {
     try {
       const reqToken = req.headers.authorization.split(" ")[1];
-      const decodeData = jwt.verify(reqToken, Secret.secret);
+      const decodeData = jwt.verify(reqToken, SECRET.SECRET.secret);
       const token = generateAccesToken(decodeData.email, decodeData.roles);
       res.json({
         token: {

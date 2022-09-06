@@ -13,7 +13,7 @@ const routerClient = require("./routers/authRouter");
 const routerAdmin = require("./routers/adminRouter");
 const routerMessages = require("./routers/messengerRouter");
 // secret
-const SECRET = require("./secrets/config");
+const SECRET = require("./config");
 const startingSocket = require("./socket")
 //db
 const GridFile = require("./models/filesSchame");
@@ -22,7 +22,7 @@ const { send } = require("process");
 const upload = multer({ dest: path.join(__dirname, '.') })
 
 
-const PORT = SECRET.PORT || "3033";
+const PORT = SECRET.SECRET.PORT || "3033";
 
 app.use(cors({
   origin: ["http://localhost:3000"],
@@ -48,11 +48,11 @@ app.post('/chatpx/filefromclient', upload.any(), async (req, res, nxt) => {
         fs.unlinkSync(file.path)
         const data = await GridFile.find({ gridFile })
          info = data[data.length - 1]
-        console.log(SECRET.serverUrl + info._id + "/" + info.filename);
+        console.log(SECRET.SECRET.URL_LOCAL_SERVER + "/chatpx/files/" + info._id + "/" + info.filename);
 
       })
       await Promise.all(promises)
-      res.send(SECRET.serverUrl + info._id + "/" + info.filename)
+      res.send(SECRET.SECRET.URL_LOCAL_SERVER + "/chatpx/files/" + info._id + "/" + info.filename)
     }
   } catch (err) {
     nxt(err)
@@ -86,7 +86,7 @@ app.get("/", (req,res)=>{
 async function startAPP() {
   try {
     mongoose
-      .connect(SECRET.MONGO_URL, {
+      .connect(SECRET.SECRET.MONGO_URL, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
       })

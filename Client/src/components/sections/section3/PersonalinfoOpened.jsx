@@ -9,7 +9,7 @@ import "./section3.css";
 
 function PersonalinfoOpened() {
   const userinfo = useSelector(state => state.setChangeSection2.changeSection2);
- const info = userinfo.contacts
+  const info = userinfo.contacts
 
   if (!info.socialNetworks) {
     return (
@@ -44,42 +44,37 @@ function PersonalinfoOpened() {
           <img src={linkedin} alt="/" />
         </div>
         <div className="section3Disc section3Icons">
-          <p>{info.email ? <a href={info.email}>{info.email}</a> : "Email"}</p>
-          <p>{info.Phone ? <a href={info.Phone}>{info.Phone}</a> : "Phone"}</p>
+          <p>{info.email !== "{...}.email.ru" ? <a href={info.email}>{info.email}</a> : "Email"}</p>
+          <p>{info.Phone !== "+374(98)..." ? <a href={info.Phone}>{info.Phone}</a> : "Phone"}</p>
           <p>
-            {info.socialNetworks[0] ? (
-              <a href={info.socialNetworks[0]}>
-                {"/" +
-                  info.socialNetworks[0].split("/")[
-                    info.socialNetworks[0].split("/").length - 1
-                  ]}
+            {info.socialNetworks.fb !== "FaceBook.com" ? (
+              <a href={info.socialNetworks.fb} target="_blank" rel="noreferrer">
+                {
+                  info.socialNetworks.fb
+                }
               </a>
             ) : (
-              "fb.com/..."
+              "FaceBook.com"
             )}
           </p>
           <p>
-            {info.socialNetworks[1] ? (
-              <a href={info.socialNetworks[1]}>
-                {"/" +
-                  info.socialNetworks[1].split("/")[
-                    info.socialNetworks[1].split("/").length - 1
-                  ]}
+            {info.socialNetworks.instagram !== "Instagran.com" ? (
+              <a href={info.socialNetworks.instagram} target="_blank" rel="noreferrer">
+                {
+                  info.socialNetworks.instagram}
               </a>
             ) : (
-              "instagram.com/..."
+              "Instagram.com"
             )}
           </p>
           <p>
-            {info.socialNetworks[2] ? (
-              <a href={info.socialNetworks[2]}>
-                {"/" +
-                  info.socialNetworks[0].split("/")[
-                    info.socialNetworks[2].split("/").length - 1
-                  ]}
+            {info.socialNetworks.linkedin !== "Linkedin.com" ? (
+              <a href={info.socialNetworks.linkedin} target="_blank" rel="noreferrer">
+                {
+                  info.socialNetworks.linkedin}
               </a>
             ) : (
-              "linkedin.com/..."
+              "Linkedin.com"
             )}
           </p>
         </div>

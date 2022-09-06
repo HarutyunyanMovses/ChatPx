@@ -15,6 +15,7 @@ import sendMessReducer from "./reducers/sendMessReducer"
 import messagesForSection2 from "./reducers/messagesForSection2"
 import videoCallReducer from "./reducers/videoCallReducer"
 import headerConfigReducer from "./reducers/headerReducer"
+import editPersonalInfoReducer from "./reducers/editPersonalInfoReducer"
 
 
 const rootReducer = combineReducers({
@@ -30,10 +31,11 @@ const rootReducer = combineReducers({
     setAllMessages:messagesForSection2,
     setSendData: sendMessReducer,
     setHeaderConfig : headerConfigReducer,
+    setEditPersonalInfo: editPersonalInfoReducer,
     setCall: videoCallReducer
 })
 
-const store = configureStore({ reducer: rootReducer }, )
+const store = configureStore({ reducer: rootReducer }, composeWithDevTools)
 
 
 export default store

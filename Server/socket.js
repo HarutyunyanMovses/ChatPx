@@ -2,7 +2,7 @@
 const axios = require("axios")
 const http = require("./index")
 //secrets
-const { URL_LOCAL_SERVER , Origin_URL1 } = require("./secrets_io/config")
+const { URL_LOCAL_SERVER , Origin_URL1 } = require("./config")
 
 const io = require("socket.io")(http , {
   cors: {

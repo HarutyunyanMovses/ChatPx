@@ -284,7 +284,6 @@ p {
     width: 11vh;
     height: 11vh;
 }
-
 .thisFileVideo{
     width: 26vh;
     height: 16vh;
@@ -292,9 +291,41 @@ p {
 
 .messageFile{
     background-color: #1d2437;
+    cursor: pointer;
 }
 
 .thisFileAudio{
     outline: none;
 }
 
+.fullScrinMess{
+    display: block;
+    position: absolute;
+    z-index: 99999999;
+    top: 20%;
+    left: 35%;
+}
+
+.fullScrinImg{
+    width: 100vh;
+    height: 70vh;
+    z-index: 99999999;
+    display: block;
+    position: absolute;
+}
+
+.closeImg{
+    color: red;
+    font-size: 30px;
+    position: relative;
+    z-index: 9999999999999;
+    cursor: pointer;
+}
+
+.downloadMess{
+    color:  rgb(0, 133, 104);
+    font-size: 30px;
+    position: absolute;
+    z-index: 9999999999999;
+    cursor: pointer;
+}
