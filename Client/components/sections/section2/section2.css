@@ -1,0 +1,331 @@
+.bigLogo{
+    width: 25vh;
+}
+
+.section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 40%;
+    width: 80%;
+    height: 90.1vh;
+    border-left: 1px solid #111520;
+    border-right: 1px solid #111520;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    min-height: 12%;
+    background-color: #111520;
+    box-shadow: 0 0 5px black;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.leftSide {
+    display: flex;
+    align-items: center;
+    min-width: 35%;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.pic {
+    width: 40px;
+    height: 40px;
+    margin-right: 1em;
+    border-radius: 2em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.textArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 6vh;
+}
+
+h6 {
+    font-size: 0.8em;
+    color: white;
+    margin: 0;
+}
+
+.online1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.online1 > p {
+    margin: 0;
+}
+
+p {
+    margin-right: 0.25em;
+    font-size: 0.8em;
+    color: grey;
+}
+
+.name_mess > div > p {
+    margin: 0.5vh;
+}
+
+.round {
+    width: 8px;
+    height: 8px;
+    background-color: green;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.rightSide {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    margin-right: 1em;
+}
+
+.button {
+    height: 1.1em;
+    cursor: pointer;
+}
+.collEnd{
+    height: 3em;
+    cursor: pointer;
+}
+
+.messagePlace {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #111520;
+    border-radius: 3px;
+    width: 90%;
+    min-height: 7%;
+    padding: 0 0.5em;
+}
+
+.messagePlace > p {
+    font-size: 1em;
+    color: rgb(0, 133, 104);
+    cursor: pointer;
+}
+
+.messagePlace > textarea {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: auto;
+    width: 80%;
+    height: 3vh;
+    font-size: 2.2vh;
+    color: white;
+    /* border: 1px solid red; */
+}
+
+.send {
+    width: 0.9em;
+    height: 0.9em;
+    cursor: pointer;
+}
+
+.showMessages {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 70%;
+    overflow: auto;
+    /* overflow-y: hidden;
+    overflow-x: scroll; */
+    padding: 10px 0;
+}
+
+.smile {
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+
+.thisUserMessage {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.otherUserMessage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.leftMessage {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    max-width: 65%;
+    height: auto;
+    background: rgb(0, 133, 104);
+    border-radius: 10px 10px 0 10px;
+    word-break: break-word;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.rightMessage {
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+    max-width: 65%;
+    height: auto;
+    background: #111520;
+    border-radius: 10px 10px 10px 0;
+    word-break: break-word;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.messageContent {
+    margin: 10px;
+    color: white;
+    user-select: text;
+}
+
+.thisUserPic {
+    width: 20px;
+    height: 20px;
+    border-radius: 2em;
+    margin-right: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.otherUserPic {
+    width: 20px;
+    height: 20px;
+    border-radius: 2em;
+    margin-left: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.messageTime {
+    margin: 0;
+    margin-top: revert;
+    display: flex;
+    justify-content: center;
+}
+
+.emoji-picker-react{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 56%;
+    left: 65%;
+}
+.close_emoji{
+    position: absolute;
+    left: 164%;
+    top: -6%;
+    z-index: 2;
+    color: red;
+    font-size: 0; 
+    cursor: pointer;
+}
+
+.update{
+    font-size: 38px;
+    cursor: pointer;
+}
+
+.updateButtons{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    padding: 2px;
+}
+
+.updateButtons>span{
+    /* border:1px solid red ; */
+    padding: 1px;
+    margin-bottom:2px ;
+    background-color: #111520;
+    cursor: pointer;
+}
+.closIsUpdate{
+    display: flex;
+    justify-content: flex-end;
+    color: red;
+    padding: 1px;
+  cursor: pointer;
+}
+
+.messUpdateInp{
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.thisFile {
+    width: 11vh;
+    height: 11vh;
+}
+.thisFileVideo{
+    width: 26vh;
+    height: 16vh;
+}
+
+.messageFile{
+    background-color: #1d2437;
+    cursor: pointer;
+}
+
+.thisFileAudio{
+    outline: none;
+}
+
+.fullScrinMess{
+    display: block;
+    position: absolute;
+    z-index: 99999999;
+    top: 20%;
+    left: 35%;
+}
+
+.fullScrinImg{
+    width: 100vh;
+    height: 70vh;
+    z-index: 99999999;
+    display: block;
+    position: absolute;
+}
+
+.closeImg{
+    color: red;
+    font-size: 30px;
+    position: relative;
+    z-index: 9999999999999;
+    cursor: pointer;
+}
+
+.downloadMess{
+    color:  rgb(0, 133, 104);
+    font-size: 30px;
+    position: absolute;
+    z-index: 9999999999999;
+    cursor: pointer;
+}

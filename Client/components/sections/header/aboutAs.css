@@ -1,0 +1,47 @@
+.aboutAs{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    min-height: 70%;
+    overflow: auto;
+    padding-top: 12px;
+}
+
+.aboutAs_pdf{
+    width: 20vh;
+}
+
+.twoDiv{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 1vh;
+    padding: 1vh;
+}
+
+.dev_avatar_Yervand{
+background-image: url("https://serverchatpx.herokuapp.com/chatpx/files/630160b78d0b1762fdf13d8c/yer.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+width: 35vh;
+height: 35vh;
+    border-radius: 50%;
+}
+.dev_avatar_Movses{
+    background-image: url("https://serverchatpx.herokuapp.com/chatpx/files/6302af3a6e8ea5c91985108c/Movses.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 35vh;
+    height: 35vh;
+        border-radius: 50%;
+    }
+.about_files{
+    display: flex;
+}
+.a_aboutAs{
+    color: aliceblue;
+}
+.certificateImg{
+    width: 30vh;
+}

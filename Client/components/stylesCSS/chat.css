@@ -1,0 +1,19 @@
+.chat{
+    display: flex;
+    flex-direction: column;
+    background-color: #1d2437;
+    height: 100%;
+}
+
+.sections{
+    display: flex;
+    color: white;
+    height: 90%;
+}
+
+.anwereCall{
+  z-index: 134;
+  position: absolute;
+  top: 60%;
+  left: 57%;
+}

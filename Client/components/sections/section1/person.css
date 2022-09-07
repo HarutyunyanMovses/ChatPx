@@ -1,0 +1,90 @@
+.chatInfo {
+    margin: 0.4em;
+    width: 95%;
+    background-color: #111520;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.avatar {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-size: cover;
+}
+
+.personAbout {
+    display: flex;
+    align-items: center;
+    padding: 0.2em;
+}
+
+.fullName {
+    color: antiquewhite;
+    font-size: 1em;
+}
+
+.lastMess {
+    justify-content: space-around;
+    color: rgb(145, 145, 137);
+}
+
+.lastMessage {
+    color: antiquewhite;
+}
+
+.lastMessDate {
+    font-size: 0.7em;
+}
+
+.name_mess {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100%;
+    margin-left: 0.8em;
+}
+
+.status {
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 0.36em;
+    color: rgb(145, 145, 137);
+}
+
+.offline {
+    background-color: rgb(255, 0, 0);
+    margin-right: 0.1em;
+}
+
+.online {
+    z-index: 1;
+    background-color: rgb(26, 196, 54);
+}
+
+.fullName,
+.chatInfo {
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+}
+
+.online,
+.offline {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+}
+
+.status,
+.fullName,
+.lastMess {
+    width: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
