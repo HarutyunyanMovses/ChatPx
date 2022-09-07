@@ -42,14 +42,14 @@ class MessageControlre {
       const lastMess = conversId ? await MessageSchame.find({
         conversationId: conversId,
         senderId: userId,
-      }): null
+      }) : null
       data._id = aboutUser[0]._id
       data.name = aboutUser[0].name;
       data.lastname = aboutUser[0].lastname;
       data.imgs = aboutUser[0].imgs;
       data.contacts = aboutUser[0].contacts
-      data.lastMessage = lastMess ? lastMess.length > 0 ? lastMess[lastMess.length - 1].message : null: null;
-      data.lastMessageDate = lastMess ?  lastMess.length > 0 ? lastMess[lastMess.length - 1].date.minutes : null: null;
+      data.lastMessage = lastMess ? lastMess.length > 0 ? lastMess[lastMess.length - 1].message : null : null;
+      data.lastMessageDate = lastMess ? lastMess.length > 0 ? lastMess[lastMess.length - 1].date.minutes : null : null;
       res.json(data);
     } catch (e) {
       console.log(e);
@@ -125,31 +125,31 @@ class MessageControlre {
     }
   }
 
-    /// delete message
-async deleteMess(req,res){
-  const _id = req.params.mess_id
-  const conversationId = req.params.conversId
-   MessageSchame.deleteOne({_id,})
-  .then(d => {
-     MessageSchame.find({conversationId,})
-     .then(data=>{
-       res.json(data)
-     })
-  })
-}
-//// update
-async updateMess(req,res){
-const _id = req.params.mess_id
-const conversationId = req.params.conversId
-const message = req.params.message
-MessageSchame.updateOne({_id,},{message,}) 
-.then(d => {
-   MessageSchame.find({conversationId,})
-   .then(data=>{
-     res.json(data)
-   })
-})
-}
+  /// delete message
+  async deleteMess(req, res) {
+    const _id = req.params.mess_id
+    const conversationId = req.params.conversId
+    MessageSchame.deleteOne({ _id, })
+      .then(d => {
+        MessageSchame.find({ conversationId, })
+          .then(data => {
+            res.json(data)
+          })
+      })
+  }
+  //// update
+  async updateMess(req, res) {
+    const _id = req.params.mess_id
+    const conversationId = req.params.conversId
+    const message = req.params.message
+    MessageSchame.updateOne({ _id, }, { message, })
+      .then(d => {
+        MessageSchame.find({ conversationId, })
+          .then(data => {
+            res.json(data)
+          })
+      })
+  }
   //////// get users for search
 
   async getUsersForSearch(req, res) {
@@ -166,6 +166,45 @@ MessageSchame.updateOne({_id,},{message,})
       res.json(arr);
     } catch (error) {
       res.status(500).json(" not internet connection ");
+    }
+  }
+
+  ///////////////// Edit personal info
+
+  async editPersonalInfo(req, res) {
+    try {
+      const body = req.body
+      const user = await User.updateOne({ _id: body._id },
+        {
+          name: body.name,
+          lastname: body.lastname,
+          contacts: body.contacts,
+          imgs: body.imgs
+      })
+        .then(async da => {
+          const user = await User.find({ _id: body._id })
+          const result = {
+            fullName: user[0].name + " " + user[0].lastname,
+            email: user[0].email,
+            gender: user[0].gender,
+            imgs: user[0].imgs,
+            contacts: user[0].contacts
+          }
+          res.json(result)
+        })
+        .catch(async e=>{
+          const user = await User.find({ _id: body._id })
+          const result = {
+            fullName: user[0].name + " " + user.lastname,
+            email: user[0].email,
+            gender: user[0].gender,
+            imgs: user[0].imgs,
+            contacts: user[0].contacts
+          }
+          res.json(result)
+        })
+    } catch (e) {
+      res.status(500).json(" user not found  ");
     }
   }
 

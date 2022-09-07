@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const SECRET = require("..//secrets/config");
+const SECRET = require("..//config");
 
 module.exports = function (roles) {
   return function (req, res, next) {
@@ -11,7 +11,7 @@ module.exports = function (roles) {
       if (!token) {
         return res.status(403).json({ massage: "User is not registred" });
       }
-      const userRoles  = jwt.verify(token, Secret.secret).roles;
+      const userRoles  = jwt.verify(token, SECRET.SECRET.secret).roles;
       let hasRole = false;
       if(roles.includes(userRoles)){
         hasRole = true

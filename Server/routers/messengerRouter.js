@@ -33,5 +33,7 @@ router.delete("/delete_message/:mess_id/:conversId",authMiddleware, MessengerCon
 router.put("/update_message/:mess_id/:conversId/:message",authMiddleware,MessengerControler.updateMess)
 // get registred users for search
 router.get("/all_registered_users", authMiddleware, MessengerControler.getUsersForSearch)
+// put peronal info of user
+router.put("/edit_personal_info", MessengerControler.editPersonalInfo)
 module.exports = router;
 

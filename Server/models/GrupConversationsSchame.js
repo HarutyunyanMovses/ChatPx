@@ -12,7 +12,7 @@ const GrupConversationSchame = new mongoose.Schema(
     },
     img:{
         type:String,
-        default:"http://localhost:3030/chatpx/files/62e7204c3d3d366b68387dbd/GROUP_AVATAR.png"
+        default:"https://serverchatpx.herokuapp.com/chatpx/files/62e7204c3d3d366b68387dbd/GROUP_AVATAR.png"
     }
 },
 {timestamps: true}
